@@ -4,7 +4,28 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import dataImages from './data/photos.json';
+
+// Data
+const countries = ['France','Japan','South Korea'];
+
+// Static
+const photos = dataImages;
+ReactDOM.render(<App images={photos} countries={countries}/>, document.getElementById('root'));
+
+// AJAX
+/*
+const endpoint = 'http://localhost/street_art_data/photos_3.json';
+
+fetch(endpoint)
+    .then(result => {
+    return result.json();
+    })
+    .then(result => {
+        if (!result) return;
+        ReactDOM.render(<App images={result} countries={countries}/>, document.getElementById('root'));
+    });
+*/
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
