@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import dataImages from './data/photos.json';
 
 // Data
-const countries = ['All','France','Japan','South Korea','Germany','Belgium','USA','Australia','New Zealand','UAE','Czech Republic','Sweden','Danmark'];
+const countries = ['All','France','Japan','South Korea','Germany','Belgium','USA','Australia','New Zealand','UAE','Czech Republic','Sweden','Denmark'];
 
 // Static
 const photos = dataImages;
