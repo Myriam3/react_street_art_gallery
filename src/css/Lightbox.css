@@ -1,0 +1,39 @@
+.overlay,
+.lightbox{
+    top:0;
+    left:0;
+    bottom:0;
+    width:100%;
+}
+.overlay{
+    position: fixed;
+    background:rgba(0,0,0,0.9);
+}
+
+.lightbox{
+    position: absolute;
+    z-index: 999;
+    height:100vh;
+    text-align:center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-wrap{
+    display: inline-block;
+}
+
+.lightbox img{
+    display: block;
+    max-height: 600px;
+    max-height: 90vh;
+    width:auto;
+}
+
+@supports(max-height: 90vh){
+    .lightbox{
+        position:fixed;
+    }
+}

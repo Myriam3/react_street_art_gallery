@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import './../css/ImageList.css';
+import Image from './Image.js';
 
 class ImageList extends Component{
     constructor(props){
@@ -8,16 +10,11 @@ class ImageList extends Component{
     render(){
         console.log('public url',process.env.PUBLIC_URL);
         return (
-            <ul>
+            <ul className="image-list">
                 {
                     this.props.images.map((img,index) => {
-                       const path = 'http://localhost/2018/street_art_react/'+img.path+'/'+img.fileName;
                        return (
-                        <li key={index}>
-                            <a href="#">
-                                <img src={path} alt=""/>
-                            </a>
-                        </li>
+                           <Image key={index} image={img}/>
                        );
                     })
                 }

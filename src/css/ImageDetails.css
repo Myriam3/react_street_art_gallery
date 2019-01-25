@@ -1,0 +1,47 @@
+
+.image-details{
+    position: relative;
+    width: 100%;
+}
+.image-details-wrap{
+    height:40px;
+    position: absolute;
+    width:100%;
+    left:0;
+    bottom:0;
+    background:rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    color:#fff;
+    font-size:0.9em;
+}
+
+.image-details .info{
+    padding:0 0.5rem;
+}
+
+@media (min-width:450px){
+    .image-details .info{
+        padding:0 1rem;
+    }
+  }
+
+.image-details .year{
+    color:var(--main-color);
+}
+
+/* Icon location */
+.image-details .location:before{
+    background: url('../icons/location.svg') center 100%;
+    background-size: auto auto;
+    background-size: cover;
+    color: #727eea;
+    width: 16px;
+    height: 16px;
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 4px;
+}

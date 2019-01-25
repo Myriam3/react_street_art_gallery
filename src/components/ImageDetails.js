@@ -1,14 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// CSS
+import './../css/ImageDetails.css';
+// ICON
+import locationIcon from './../icons/location.svg';
 
 const ImagesDetails = props => {
-    console.log('props',props);
     return (
-        <div>
-            <span>{props.country}</span>
-            <span>{props.city}</span>
-            <span>{props.location}</span>
-            <span>{props.year}</span>
+        <div className="image-details">
+            <div className="image-details-wrap">
+                {
+                    props.location ? <span className="info location">{props.location}</span> : ''
+                }
+                <span className="info">{props.city} - {props.country}</span>         
+                <span className="info year">{props.year}</span>
+            </div>
         </div>
     )
 };

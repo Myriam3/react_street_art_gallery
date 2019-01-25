@@ -1,0 +1,20 @@
+
+.country-list{
+    margin:1rem 0 2rem;
+    text-align: center;
+}
+
+.country-list-item{
+    display: inline-block;
+    margin:0.5rem;
+}
+
+.country-list-item.active a{
+    border-bottom: 3px solid var(--main-color);
+    color:var(--secondary-text);
+}
+
+.country-list-item a:hover,
+.country-list-item a:focus{
+    color:var(--secondary-text);
+}

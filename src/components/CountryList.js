@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './../css/CountryList.css';
 
 const CountryList = props => {
     return (
-            <ul>
+            <ul className="country-list">
                 {
                     props.countries.map((item,index) => {
-                        return <li key={index}><a href="#">{item}</a></li>
+                        return <li key={index} className="country-list-item"><a href="#">{item}</a></li>
                     })
                 }
             </ul>

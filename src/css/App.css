@@ -1,0 +1,61 @@
+/******************************
+Fonts
+******************************/
+
+/*@font-face {
+  font-family: 'Unica One';
+  src: url('../fonts/unica_one.woff2') format('woff2'),
+     url('../fonts/unica_one.woff') format('woff'),
+     url('../fonts/unica_one.ttf')  format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}*/
+
+/******************************
+Main
+******************************/
+:root{
+  --primary-text:#777;
+  --secondary-text:#000;
+  --main-color:#727DEA;
+  --main-color-light:#99A2F3;
+  --main-color-dark:#515EDD;
+  --light-grey:#EAEAEA;
+}
+
+html{
+  font-size:16px;
+}
+
+@media (min-width:520px){
+  html{
+    font-size:16px;
+  }
+}
+
+@media (min-width:980px){
+  html{
+    font-size:18px;
+  }
+}
+
+body{
+  font-family: 'Unica One',serif;
+  color:var(--primary-text);
+}
+
+ul,li{
+  list-style: none;
+  margin:0;
+  padding: 0;
+}
+
+a{
+  color:inherit;
+  text-decoration: none;
+}
+
+img{
+  max-width:100%;
+  height: auto;
+}
