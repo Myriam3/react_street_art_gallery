@@ -13,29 +13,50 @@ class App extends Component {
 
   constructor(props){
     super(props);  
+    
 
     // Country list
     this.countries = this.props.countries;
     // Photos
     this.dataImages = this.props.images
 
+    this.state = {
+      currentCountry: 'All',
+      currentImageList: this.dataImages
+    }
+
   }
 
   // Methods
+
+  //  Updates state.currentCountry & state.currentImageList with array of images filtered by country
+  filterByCountry = country =>{
+    let filteredImages;
+    
+    if (country !== 'All'){
+      filteredImages = this.dataImages.filter(img => img.country === country);
+    }
+    else{
+      filteredImages = this.dataImages;
+    }
+    
+    this.setState({
+      currentCountry: country,
+      currentImageList: filteredImages
+    });
+  }
 
   // Render
   render() {
     return (
         <div>
           <nav>
-            <CountryList countries={this.countries}/>
+            <CountryList countries={this.countries} clickHandler={this.filterByCountry} currentCountry={this.state.currentCountry}/>
           </nav>
           
           <div>
-            <ImageList images={this.dataImages}/>
-          </div>
-
-          
+            <ImageList images={this.state.currentImageList}/>
+          </div>          
           {/*<Lightbox image={this.dataImages[3]}/>*/}
           
         </div>

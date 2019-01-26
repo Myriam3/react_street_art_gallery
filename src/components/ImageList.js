@@ -11,11 +11,10 @@ class ImageList extends Component{
         super(props);
     }
     render(){
-        console.log('public url',process.env.PUBLIC_URL);
         return (
             <ul className="image-list">
                <li className="image-list-map world">
-                    <Map currentCountry="world"/>
+                    <Map currentCountry="All"/>
                 </li>
                 {
                     this.props.images.map((img,index) => {
