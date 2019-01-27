@@ -32,7 +32,6 @@ class App extends Component {
 
   // getCityList()
   // Get city list of the current country
-  
   getCityList = () => {
     if (this.state.currentCountry === 'All') return;
 
@@ -51,7 +50,9 @@ class App extends Component {
   }
 
   // filterByCountry()
-  // Updates state.currentCountry & state.currentImageList with array of images filtered by country. Filter from all images (dataImages)
+  // Updates currentCountry state
+  // Updates currentImageList state with array of images filtered by country. Filter from all images (dataImages)
+  // Reset currentCity state
   filterByCountry = country =>{
     let filteredImages;
     if (country !== 'All'){
@@ -62,12 +63,14 @@ class App extends Component {
     }
     this.setState({
       currentCountry: country,
+      currentCity:'All',
       currentImageList: filteredImages
     });
   }
   
   // filterByCity()
-  //  Updates state.currentCity & state.currentImageList with array of images filtered by country and city
+  //  Updates currentCity state
+  // Updates currentImageList state with array of images filtered by country and city
   filterByCity = city =>{
     // Filter by country
     let filteredImages = this.dataImages.filter(img => img.country === this.state.currentCountry);

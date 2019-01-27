@@ -5,28 +5,35 @@ import worldSVG from './../maps/world.svg';
 
 const WorldMap = (props) => {
     
-    const objectRef = React.createRef();
+   const objectRef = React.createRef();
 
-    window.addEventListener('load',(e) => {
-        let svg;
-        if (objectRef.current && objectRef.current.contentDocument){
-            svg = objectRef.current.contentDocument.documentElement;
-        }
-        
-        if (!svg) return;        
-        
-        const links = svg.querySelectorAll('a');
+   const handleClick = () => {
+    console.log('hey');
+    let svg;
+    if (objectRef.current && objectRef.current.contentDocument){
+        svg = objectRef.current.contentDocument.documentElement;
+    }
+    
+    if (!svg) return;        
+    
+    const links = svg.querySelectorAll('a');
 
-        links.forEach(link => {
-            link.addEventListener('click',function(e){
-                e.preventDefault();
-                props.clickHandler(this.dataset.link);
-            });
-        })
+    links.forEach(link => {
+        link.addEventListener('click',function(e){
+            e.preventDefault();
+            console.log(link);
+            props.clickHandler(this.dataset.link);
+        });
     });
-   
+   }
+
+   // on first load 
+   window.addEventListener('load',() => {
+    handleClick();
+   });
+
     return (
-        <object type="image/svg+xml" data={worldSVG} ref={objectRef}></object>
+        <object type="image/svg+xml" data={worldSVG} ref={objectRef} onLoad={handleClick}></object>
     );
 };
 
@@ -37,7 +44,7 @@ const WorldMap = (props) => {
     }
 }*/
 WorldMap.propTypes = {
-    clickHandler: PropTypes.func
+    clickHandler: PropTypes.func.isRequired
 }
 
 
