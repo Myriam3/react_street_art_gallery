@@ -4,10 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import dataImages from './data/photos.json';
+import dataImages from './data/photos_3.json';
 
 // Data
-const countries = ['All','France','Japan','South Korea','Germany','Belgium','USA','Australia','New Zealand','UAE','Czech Republic','Sweden','Denmark'];
+const countries = ['France','Japan','South Korea','Germany','Belgium','USA','Australia','New Zealand','UAE','Czech Republic','Sweden','Denmark'];
 
 // Static
 const photos = dataImages;
