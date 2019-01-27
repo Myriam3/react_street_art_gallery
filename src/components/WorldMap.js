@@ -8,7 +8,6 @@ const WorldMap = (props) => {
    const objectRef = React.createRef();
 
    const handleClick = () => {
-    console.log('hey');
     let svg;
     if (objectRef.current && objectRef.current.contentDocument){
         svg = objectRef.current.contentDocument.documentElement;
@@ -37,12 +36,6 @@ const WorldMap = (props) => {
     );
 };
 
-/*class Map extends Component{
-    constructor(props){
-        super(props);
-        this.objectRef = React.createRef();
-    }
-}*/
 WorldMap.propTypes = {
     clickHandler: PropTypes.func.isRequired
 }

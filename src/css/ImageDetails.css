@@ -16,6 +16,14 @@
     align-items: center;
     color:#fff;
     font-size:0.9em;
+    /*! Toggled*/
+    transform: translateY(100%);
+    opacity:0;
+}
+/*Toggled*/
+.image-details-wrap.active{
+    transform: translateY(0);
+    opacity:1;
 }
 
 .image-details .info{

@@ -24,11 +24,17 @@ class App extends Component {
     this.state = {
       currentCountry: 'All',
       currentCity: 'All',
-      currentImageList: this.dataImages
+      currentImageList: this.dataImages,
+      lightbox: true,
+      currentIndex: 0
     }
   }
 
   // Methods
+
+  /**************************************/
+  /* Image List */
+  /**************************************/
 
   // getCityList()
   // Get city list of the current country
@@ -86,8 +92,55 @@ class App extends Component {
     }); 
   }
 
-  // Render
+  /**************************************/
+  /* Lightbox */
+  /**************************************/
+  openLightbox = (index) => { // number
+    this.setState({
+      lightbox: true,
+      currentIndex: index
+    });
+  }
+
+  closeLightbox = () => {
+    this.setState({
+      lightbox: false
+    });
+  }
+
+  navigateLightbox = (next) => { // boolean
+    let oldIndex = this.state.currentIndex;
+    let newIndex;
+    const lastIndex = this.state.currentImageList.length-1;
+    
+    // next image
+    if (next){ 
+      if (oldIndex !== lastIndex)  newIndex = oldIndex + 1;       
+      // if last img, go to the first
+      else newIndex = 0;
+    }
+    // previous image
+    else {
+      if (oldIndex !== 0) newIndex = oldIndex - 1;
+      // if first img, go to the last
+      else newIndex = lastIndex;
+    }
+
+    this.setState({
+      currentIndex: newIndex
+    });
+  }
+
+  /**************************************/
+  /* Render */
+  /**************************************/
   render() {
+    const lightboxProps = {
+      image: this.state.currentImageList[this.state.currentIndex],
+      onExit: this.closeLightbox,
+      onNav: this.navigateLightbox
+    }
+
     return (
         <div>
           <nav className="country-list">
@@ -105,10 +158,14 @@ class App extends Component {
           <div>
             <ImageList 
               images={this.state.currentImageList} 
-              clickHandler={this.filterByCountry} 
+              mapNavigation={this.filterByCountry}
+              clickHandler={this.openLightbox} 
               currentCountry={this.state.currentCountry}/>
           </div>          
-          {/*<Lightbox image={this.dataImages[3]}/>*/}
+          {
+           
+            this.state.lightbox ? <Lightbox  {...lightboxProps}/> : ''
+            }
           
         </div>
     )

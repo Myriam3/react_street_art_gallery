@@ -13,7 +13,7 @@ class ImageList extends Component{
     renderWorldMap = () => {
         return (
             <li className="image-list-map world">
-                <WorldMap clickHandler={this.props.clickHandler}/>
+                <WorldMap clickHandler={this.props.mapNavigation}/>
             </li>
         );
     }
@@ -26,8 +26,13 @@ class ImageList extends Component{
             }
             { // Images
                 this.props.images.map((img,index) => {
+                    
                     return (
-                        <Image key={index} image={img}/>
+                        <Image 
+                            key={index}
+                            index={index} 
+                            image={img} 
+                            clickHandler={this.props.clickHandler}/>
                     );
                 })
             }
@@ -38,8 +43,9 @@ class ImageList extends Component{
 
 ImageList.propTypes = {
     images: PropTypes.arrayOf(PropTypes.object).isRequired,
-    currentCountry: PropTypes.string,
-    clickHandler: PropTypes.func
+    currentCountry: PropTypes.string.isRequired,
+    mapNavigation: PropTypes.func.isRequired,
+    clickHandler: PropTypes.func.isRequired
 }
 
 export default ImageList;

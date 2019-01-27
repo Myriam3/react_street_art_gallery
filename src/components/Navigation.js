@@ -44,7 +44,8 @@ const Navigation = props => {
 
 Navigation.propTypes = {
     places: PropTypes.arrayOf(PropTypes.string).isRequired,
-    currentPlace: PropTypes.string
+    currentPlace: PropTypes.string.isRequired,
+    clickHandler: PropTypes.func.isRequired
 }
 
 export default Navigation;
