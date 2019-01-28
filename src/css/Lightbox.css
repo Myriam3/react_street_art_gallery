@@ -41,14 +41,25 @@
     }
 }
 
-.lightbox .btn{
+/*** Buttons ***/
+
+.lightbox-btn{
     position: absolute;
     padding: 0;
     display: block;
  
 }
+.lightbox-btn:focus{
+    outline:0;
+    background:rgba(255,255,255,0.05);
+}
+.lightbox-btn:focus svg,
+.lightbox-btn:hover svg{
+    fill:var(--main-color);
+    opacity:1;
+}
 
-.lightbox .btn svg{
+.lightbox-btn svg{
     width:1.7rem;
     height:1.7rem;;
     opacity:0.4;
@@ -56,14 +67,14 @@
     padding: 0.5rem;
 }
 
-.lightbox .close-btn{
+.lightbox-btn.close-btn{
     top:0;
     right:0;
 }
-.lightbox .nav-btn{
+.lightbox-btn.nav-btn{
     top:2rem;
 }
-.lightbox .nav-btn svg{
+.lightbox-btn.nav-btn svg{
     
 }
 

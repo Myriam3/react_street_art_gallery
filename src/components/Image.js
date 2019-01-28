@@ -11,7 +11,7 @@ const Image = props => {
      }
     return (
         <li className={classes.join(' ')}>
-            <a href="#" onClick={openLightbox}>
+            <a href="#" onClick={openLightbox} data-current-index={props.index}>
                 <img src={path} alt=""/>
             </a>
         </li>

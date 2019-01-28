@@ -103,6 +103,7 @@ class App extends Component {
   }
 
   closeLightbox = () => {
+    document.querySelector(`a[data-current-index="${this.state.currentIndex}"]`).focus();
     this.setState({
       lightbox: false
     });
@@ -126,9 +127,12 @@ class App extends Component {
       else newIndex = lastIndex;
     }
 
-    this.setState({
-      currentIndex: newIndex
-    });
+    if (!(oldIndex === newIndex)){
+      this.setState({
+        currentIndex: newIndex
+      });
+    }
+
   }
 
   /**************************************/

@@ -6,8 +6,15 @@
 .image-list-map a{
     display: block;
     position:relative;
-    border:solid red;
 }
+.image-list-item a{
+    display: block;     
+}
+.image-list-item a:focus img{
+  opacity:0.5;
+}
+
+/*** Layout ***/
 
 /* 1. FALLBACK */
 
