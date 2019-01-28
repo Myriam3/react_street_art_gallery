@@ -59,3 +59,10 @@ img{
   max-width:100%;
   height: auto;
 }
+
+.btn{
+  border:none;
+  background: none;
+  color:inherit;
+  cursor: pointer;
+}

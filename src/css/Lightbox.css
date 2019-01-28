@@ -17,12 +17,15 @@
     text-align:center;
     display:flex;
     flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    color:#fff;
 }
 
 .lightbox-wrap{
     display: inline-block;
+    position: relative;
 }
 
 .lightbox img{
@@ -35,5 +38,55 @@
 @supports(max-height: 90vh){
     .lightbox{
         position:fixed;
+    }
+}
+
+.lightbox .btn{
+    position: absolute;
+    padding: 0;
+    display: block;
+ 
+}
+
+.lightbox .btn svg{
+    width:1.7rem;
+    height:1.7rem;;
+    opacity:0.4;
+    fill:currentColor;
+    padding: 0.5rem;
+}
+
+.lightbox .close-btn{
+    top:0;
+    right:0;
+}
+.lightbox .nav-btn{
+    top:2rem;
+}
+.lightbox .nav-btn svg{
+    
+}
+
+.lightbox .next,
+.lightbox .info-btn{
+    right:0;
+}
+.lightbox .prev{
+    left:0;
+}
+
+
+.lightbox .info-btn{
+    bottom:0; 
+   
+}
+.lightbox .info-btn svg{
+    widows: 1.3em;
+    height:1.3rem;
+    padding: 0;
+}
+@media (min-width:520px){
+    .lightbox .nav-btn{
+        top: 50vh;
     }
 }
