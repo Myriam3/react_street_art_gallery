@@ -25,12 +25,28 @@ class App extends Component {
       currentCountry: 'All',
       currentCity: 'All',
       currentImageList: this.dataImages,
-      lightbox: true,
-      currentIndex: 0
+      lightbox: false,
+      currentIndex: 0,
+      maxIndex:40
     }
   }
 
   // Methods
+
+  lazyLoad = () => {
+    const images = this.state.currentImageList
+                    .filter((img,index) => {
+                      return index <= this.state.maxIndex;
+                    });
+    return images;
+  }
+
+  loadImages = (e) => {
+    console.log(e);
+    this.setState({
+      maxIndex: this.state.maxIndex + 40
+    })
+  }
 
   /**************************************/
   /* Image List */
@@ -103,7 +119,8 @@ class App extends Component {
   }
 
   closeLightbox = () => {
-    document.querySelector(`a[data-current-index="${this.state.currentIndex}"]`).focus();
+    let lastImg = document.querySelector(`a[data-current-index="${this.state.currentIndex}"]`);
+    if (lastImg) lastImg.focus();
     this.setState({
       lightbox: false
     });
@@ -161,10 +178,11 @@ class App extends Component {
           </nav>
           <div>
             <ImageList 
-              images={this.state.currentImageList} 
+              images={this.lazyLoad()} 
               mapNavigation={this.filterByCountry}
               clickHandler={this.openLightbox} 
               currentCountry={this.state.currentCountry}/>
+              <button className="btn" onClick={this.loadImages}>See more</button>
           </div>          
           {
            
