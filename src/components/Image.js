@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Image = props => {
     const img = props.image;
-    const path = 'http://localhost/2018/street_art_react/'+img.path+'/'+img.fileName;
+    const path = 'https://myriambucourt.com/photos/street_art/'+img.path+'/'+img.fileName;
     const classes = ['image-list-item'].concat(img.classes);
     const openLightbox = (e) => {
          e.preventDefault();

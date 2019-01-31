@@ -103,7 +103,7 @@ class Lightbox extends Component {
     render(){
        
         const img = this.props.image;
-        const path = 'http://localhost/2018/street_art_react/'+img.path+'/'+img.fileName;
+        const path = 'https://myriambucourt.com/photos/street_art/'+img.path+'/'+img.fileName;
         const infos = {
             country: img.country,
             city: img.city,

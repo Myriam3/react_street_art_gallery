@@ -2,14 +2,14 @@
 Fonts
 ******************************/
 
-/*@font-face {
+@font-face {
   font-family: 'Unica One';
-  src: url('../fonts/unica_one.woff2') format('woff2'),
-     url('../fonts/unica_one.woff') format('woff'),
-     url('../fonts/unica_one.ttf')  format('truetype');
+  src: url('https://myriambucourt.com/photos/street_art/fonts/unica_one.woff2') format('woff2'),
+     url('https://myriambucourt.com/photos/street_art/fonts/unica_one.woff') format('woff'),
+     url('https://myriambucourt.com/photos/street_art/fonts/unica_one.ttf')  format('truetype');
   font-weight: normal;
   font-style: normal;
-}*/
+}
 
 /******************************
 Main
