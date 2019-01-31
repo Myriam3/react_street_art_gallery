@@ -42,11 +42,8 @@ class Lightbox extends Component {
     }
 
     handleKeys = (e) => {
-       // e.preventDefault();
-        console.log(e.keyCode);
-        
+      
         switch (e.keyCode){
-
             // Arrow Right
             case 39:
                 this.nextImage();
@@ -72,7 +69,6 @@ class Lightbox extends Component {
             // Tab - Focus trapping
             case 9:
                 // Navigate backward
-              
                 if (e.shiftKey){
                    if(document.activeElement === this.firstFocus.current){
                     e.preventDefault();
@@ -106,7 +102,7 @@ class Lightbox extends Component {
     // Render
     render(){
        
-        const img = this.props.image; 
+        const img = this.props.image;
         const path = 'http://localhost/2018/street_art_react/'+img.path+'/'+img.fileName;
         const infos = {
             country: img.country,

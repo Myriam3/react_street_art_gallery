@@ -19,6 +19,7 @@ class App extends Component {
     
     // Photos
     this.dataImages = this.props.images
+    this.batch = 20;
 
     // State init
     this.state = {
@@ -27,26 +28,30 @@ class App extends Component {
       currentImageList: this.dataImages,
       lightbox: false,
       currentIndex: 0,
-      maxIndex:40
+      maxIndex: this.batch - 1
     }
   }
 
   // Methods
 
   lazyLoad = () => {
+
     const images = this.state.currentImageList
                     .filter((img,index) => {
                       return index <= this.state.maxIndex;
                     });
     return images;
   }
-
+  
   loadImages = (e) => {
-    console.log(e);
+    const left = this.state.currentImageList.length - (this.state.maxIndex+1);
+    const load = left >= this.batch ? this.batch : left;
     this.setState({
-      maxIndex: this.state.maxIndex + 40
+      maxIndex: this.state.maxIndex + load
     })
   }
+
+  
 
   /**************************************/
   /* Image List */
@@ -86,7 +91,8 @@ class App extends Component {
     this.setState({
       currentCountry: country,
       currentCity:'All',
-      currentImageList: filteredImages
+      currentImageList: filteredImages,
+      maxIndex: this.batch - 1
     });
   }
   
@@ -104,7 +110,8 @@ class App extends Component {
 
     this.setState({
       currentCity: city,
-      currentImageList: filteredImages
+      currentImageList: filteredImages,
+      maxIndex: this.batch - 1
     }); 
   }
 
@@ -127,10 +134,10 @@ class App extends Component {
   }
 
   navigateLightbox = (next) => { // boolean
+    const leftImages = this.state.currentImageList.length - (this.state.maxIndex+1);
     let oldIndex = this.state.currentIndex;
     let newIndex;
-    const lastIndex = this.state.currentImageList.length-1;
-    
+    const lastIndex = leftImages > 0 ? this.state.maxIndex : this.state.currentImageList.length-1;    
     // next image
     if (next){ 
       if (oldIndex !== lastIndex)  newIndex = oldIndex + 1;       
@@ -143,7 +150,7 @@ class App extends Component {
       // if first img, go to the last
       else newIndex = lastIndex;
     }
-
+    
     if (!(oldIndex === newIndex)){
       this.setState({
         currentIndex: newIndex
@@ -162,6 +169,8 @@ class App extends Component {
       onNav: this.navigateLightbox
     }
 
+    const leftImages = this.state.currentImageList.length - (this.state.maxIndex+1);
+  
     return (
         <div>
           <nav className="country-list">
@@ -176,19 +185,18 @@ class App extends Component {
               clickHandler={this.filterByCity} 
               currentPlace={this.state.currentCity}/>
           </nav>
-          <div>
+          <main className='main'>
             <ImageList 
               images={this.lazyLoad()} 
               mapNavigation={this.filterByCountry}
               clickHandler={this.openLightbox} 
               currentCountry={this.state.currentCountry}/>
-              <button className="btn" onClick={this.loadImages}>See more</button>
-          </div>          
-          {
-           
-            this.state.lightbox ? <Lightbox  {...lightboxProps}/> : ''
-            }
-          
+              <div className="pagination">
+                <p>{leftImages > 0 ? this.state.currentImageList.length - leftImages : this.state.currentImageList.length} / {this.state.currentImageList.length}</p>
+                {leftImages > 0 ? <button className="btn load-btn" onClick={this.loadImages}>See more</button> : null}
+            </div> 
+          </main>       
+          {this.state.lightbox ? <Lightbox  {...lightboxProps}/> : null }
         </div>
     )
   }
